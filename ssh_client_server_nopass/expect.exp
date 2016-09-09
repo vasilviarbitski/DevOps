@@ -1,0 +1,7 @@
+#!/usr/bin/expect
+spawn ssh-copy-id 10.0.0.10
+expect "*re you sure*"
+send "yes\r"
+expect "*passw*"
+send "vagrant\r"
+expect eof
