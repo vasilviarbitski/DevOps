@@ -8,3 +8,9 @@ runtime 'mysql:mysql-connector-java:5.1.31'
 testCompile 'org.spockframework:spock-core:0.7-groovy-2.0'
 testRuntime 'com.h2database:h2:1.4.180'
 }
+
+repositories {
+  mavenlocal()
+  jcenter()
+  mavenCentral()
+}
