@@ -10,7 +10,7 @@ testRuntime 'com.h2database:h2:1.4.180'
 }
 
 repositories {
-  mavenlocal()
+  mavenLocal()
   jcenter()
   mavenCentral()
 }
