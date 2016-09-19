@@ -12,5 +12,5 @@ compile group: 'org.apache.commons', name: 'commons-io', version: '1.3.2'
 println 'hello'
 println gradle.version
 
-war.archivesBaseName = "test##"
-war.version = gradle.version
+gradle.archivesBaseName = "test##"
+gtadle.version = gradle.version
