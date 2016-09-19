@@ -1,0 +1,22 @@
+node('master'){
+    stage('Pull from git'){
+        git 'https://github.com/vasilviarbitski/DevOps'
+    }
+    stage('Build war'){
+        dir('gradle') {
+            sh './gradlew build'
+        }
+    }
+    stage('Stash war file'){
+        dir('/var/lib/jenkins/workspace/gradle2/gradle/build/libs'){
+            stash includes: '*.war', name: 'warfile'
+        }
+    }
+}
+node('tomcat'){
+    stage('Upload to tomcat'){
+        dir('/var/lib/tomcat/webapps/test/'){
+            unstash 'warfile'
+        }
+    }
+}
