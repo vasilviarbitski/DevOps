@@ -9,9 +9,13 @@ compile group: 'log4j', name: 'log4j', version: '1.2.17'
 compile group: 'org.apache.commons', name: 'commons-io', version: '1.3.2'
 }
 
+File file = new File(settings.gradle')
+def ver = file.text
 
 war {
     archivesBaseName = 'test##' 
-    version = gradle.version
-    gradle.version++
+    version = gradle.versionFile file = new File("C:/temp/test.txt")
 }
+
+ver++
+file.text = ver
