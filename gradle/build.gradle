@@ -1,16 +1,1 @@
-apply plugin: 'java'
-apply plugin: 'war'
 
-dependencies {
-compile 'org.codehaus.groovy:groovy-all:2.3.3'
-runtime 'mysql:mysql-connector-java:5.1.31'
-
-testCompile 'org.spockframework:spock-core:0.7-groovy-2.0'
-testRuntime 'com.h2database:h2:1.4.180'
-}
-
-repositories {
-  mavenLocal()
-  jcenter()
-  mavenCentral()
-}
