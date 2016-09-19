@@ -9,5 +9,7 @@ compile group: 'log4j', name: 'log4j', version: '1.2.17'
 compile group: 'org.apache.commons', name: 'commons-io', version: '1.3.2'
 }
 
-war.baseName = 'demo##'
-war.version = project.version
+war {
+baseName = 'demo##'
+version = project.version
+}
