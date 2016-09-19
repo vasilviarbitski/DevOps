@@ -13,4 +13,5 @@ compile group: 'org.apache.commons', name: 'commons-io', version: '1.3.2'
 war {
     archivesBaseName = 'test##' 
     version = gradle.version
+    gradle.version++
 }
