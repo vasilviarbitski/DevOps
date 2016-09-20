@@ -8,10 +8,19 @@ node('master'){
         }
     }
     stage('Stash war file'){
-        dir('/var/lib/jenkins/workspace/gradle2/gradle/build/libs'){
+        dir('gradle/build/libs'){
             stash includes: '*.war', name: 'warfile'
         }
     }
+    stage('Push version to git'){
+        dir ('gradle'){
+            sh 'git config --global user.name "Your Name"'    
+            sh 'git config --global user.email "vverbitskii@gmail.com"'
+            sh 'git add settings.gradle'
+            sh 'git commit -m "version change"'
+            sh 'git push https://vasilviarbitski:notanymore666@github.com/vasilviarbitski/DevOps.git master'
+        }
+        }
 }
 node('tomcat'){
     stage('Upload to tomcat'){
@@ -19,8 +28,8 @@ node('tomcat'){
             unstash 'warfile'
         }
     }
-    stage ('test request'){
-        httpRequest 'http://10.0.0.11:8080/test/'
-        echo 'Well done!'
+    stage('HTTP request'){
+        httpRequest 'http://10.0.0.11:8080'
+        echo 'Success'
     }
 }
