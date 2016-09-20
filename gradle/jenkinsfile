@@ -24,9 +24,8 @@ node('master'){
 }
 node('tomcat'){
     stage('Upload to tomcat'){
-        dir('/var/lib/tomcat/webapps/test/'){
+            sh 'cd /var/lib/tomcat/webapps/'    
             unstash 'warfile'
-        }
     }
     stage('HTTP request'){
         httpRequest 'http://10.0.0.11:8080'
