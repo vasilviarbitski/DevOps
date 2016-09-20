@@ -19,8 +19,8 @@ war {
 //ver = ver.toInteger()
 //ver++
 //file.text = ver
-
+vers++
 ant.propertyfile(
         file: "gradle.properties") {
-        entry( key: "vers", value: 9)
+        entry( key: "vers", value: vers)
         }
