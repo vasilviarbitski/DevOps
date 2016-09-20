@@ -19,7 +19,7 @@ node('master'){
             sh 'git add gradle.properties'
             withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'git', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD']]) {
                 sh('git commit -m "version change"')
-                sh('git push https://${env.GIT_USERNAME}:${env.GIT_PASSWORD}@github.com/vasilviarbitski/DevOps.git master')
+                sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/vasilviarbitski/DevOps.git master')
             }
         }
         }
