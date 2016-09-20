@@ -22,5 +22,5 @@ war {
 
 ant.propertyfile(
         file: "gradle.properties") {
-        entry( key: "vers", value: vers++)
+        entry( key: "vers", value: 9)
         }
