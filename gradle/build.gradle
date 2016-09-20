@@ -14,11 +14,6 @@ war {
     version = vers
 }
 
-//File file = new File('gradle.properties')
-//def ver = file.text
-//ver = ver.toInteger()
-//ver++
-//file.text = ver
 vers++
 ant.propertyfile(
         file: "gradle.properties") {
