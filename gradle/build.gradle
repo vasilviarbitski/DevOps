@@ -17,5 +17,5 @@ war {
     version = ver
 }
 
-ver = ver + 1
+ver = ver++
 file.text = ver
