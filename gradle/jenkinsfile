@@ -18,7 +18,7 @@ node('master'){
             sh 'git config --global user.email "vverbitskii@gmail.com"'
             sh 'git add gradle.properties'
             sh 'git commit -m "version change"'
-            sh 'git push https://vasilviarbitski:notanymore666@github.com/vasilviarbitski/DevOps.git master'
+            sh 'git push https://vasilviarbitski:******@github.com/vasilviarbitski/DevOps.git master'
         }
         }
 }
