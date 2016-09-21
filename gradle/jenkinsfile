@@ -9,17 +9,19 @@ node('master'){
     }
     stage('Version'){
         dir('gradle') {
+            def retFull(){
             def file = readFile 'gradle.properties'
             def lines = file.readLines()
             def vers = lines[1].tokenize('=')
             def subvers = lines[2].tokenize('=')
             def fullvers = vers[1]+"."+subvers[1]
             println fullvers
+            }
         }
     }
     stage('Stash war file'){
         dir('gradle/build/libs'){
-            println fullvers
+            retFull()
 //            def warname = 'build##-'+fullvers
             stash includes: '*.war', name: 'warfile'
         }
