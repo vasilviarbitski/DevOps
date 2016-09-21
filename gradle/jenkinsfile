@@ -1,6 +1,6 @@
 
             def retFull() {
-            def file = readFile 'gradle.properties'
+            def file = readFile '/var/lib/jenkins/workspace/gradle4/gradle/gradle.properties'
             def lines = file.readLines()
             def vers = lines[1].tokenize('=')
             def subvers = lines[2].tokenize('=')
