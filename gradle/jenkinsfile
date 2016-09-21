@@ -25,7 +25,7 @@ node('master'){
     }
     stage('Push version to git'){
         dir ('gradle'){
-            sh 'gradle versionUpdate'  
+            sh './gradlew versionUpdate'  
             sh 'git config --global user.name "Your Name"'    
             sh 'git config --global user.email "vverbitskii@gmail.com"'
             sh 'git add gradle.properties'
