@@ -1,5 +1,5 @@
-dir('gradle') {
-            def retFull(){
+
+            def retFull() {
             def file = readFile 'gradle.properties'
             def lines = file.readLines()
             def vers = lines[1].tokenize('=')
@@ -7,8 +7,7 @@ dir('gradle') {
             def fullvers = vers[1]+"."+subvers[1]
             println fullvers
             }
-        }
-        
+       
 node('master'){
     stage('Pull from git'){
         git 'https://github.com/vasilviarbitski/DevOps'
