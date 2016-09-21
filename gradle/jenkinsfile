@@ -20,8 +20,8 @@ node('master'){
     stage('Stash war file'){
         dir('gradle/build/libs'){
             println fullvers
-            def it = 'build##-'+fullvers
-            stash includes: it+'.war', name: 'warfile'
+            def warname = 'build##-'+fullvers
+            stash includes: warname+'.war', name: 'warfile'
         }
     }
  //   stage('Push version to git'){
