@@ -1,13 +1,12 @@
-
-            def retFull() {
-            def file = readFile '/var/lib/jenkins/workspace/gradle4/gradle/gradle.properties'
-            def lines = file.readLines()
-            def vers = lines[1].tokenize('=')
-            def subvers = lines[2].tokenize('=')
-            def fullvers = vers[1]+"."+subvers[1]
-            return fullvers
-            }
-       
+def retFull() {
+    def file = readFile '/var/lib/jenkins/workspace/gradle4/gradle/gradle.properties'
+    def lines = file.readLines()
+    def vers = lines[1].tokenize('=')
+    def subvers = lines[2].tokenize('=')
+    def fullvers = vers[1]+"."+subvers[1]
+    return fullvers
+}
+      
 node('master'){
     stage('Pull from git'){
         git 'https://github.com/vasilviarbitski/DevOps'
@@ -17,9 +16,6 @@ node('master'){
             sh './gradlew build'
         }
     }
-    
-        
-    
     stage('Stash war file'){
         dir('gradle/build/libs'){
             def fullvers = retFull()
@@ -41,9 +37,9 @@ node('master'){
 }
 node('tomcat'){
     stage('Upload to tomcat'){
-            dir ('/var/lib/tomcat/webapps/'){    
+        dir ('/var/lib/tomcat/webapps/'){    
             unstash 'warfile'
-            }
+        }
     }
     stage('HTTP request'){
         sh 'sleep 10'
