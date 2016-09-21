@@ -23,17 +23,18 @@ node('master'){
             stash includes: "build##-${fullvers}.war", name: 'warfile'
         }
     }
- //   stage('Push version to git'){
- //       dir ('gradle'){
- //           sh 'git config --global user.name "Your Name"'    
- //           sh 'git config --global user.email "vverbitskii@gmail.com"'
- //           sh 'git add gradle.properties'
- //           withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'git', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD']]) {
- //               sh('git commit -m "version change"')
- //               sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/vasilviarbitski/DevOps.git master')
- //           }
- //       }
- //       }
+    stage('Push version to git'){
+        dir ('gradle'){
+            sh 'gradle versionUpdate'  
+            sh 'git config --global user.name "Your Name"'    
+            sh 'git config --global user.email "vverbitskii@gmail.com"'
+            sh 'git add gradle.properties'
+            withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'git', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD']]) {
+                sh('git commit -m "version change"')
+                sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/vasilviarbitski/DevOps.git master')
+            }
+        }
+    }
 }
 node('tomcat'){
     stage('Upload to tomcat'){
