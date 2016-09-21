@@ -18,7 +18,7 @@ node('master'){
     }
     stage('Stash war file'){
         dir('gradle/build/libs'){
-            stash includes: '${fullvers}.war', name: 'warfile'
+            stash includes: "build##-${fullvers}.war", name: 'warfile'
         }
     }
  //   stage('Push version to git'){
