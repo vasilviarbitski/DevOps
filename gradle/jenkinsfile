@@ -7,7 +7,7 @@ node('master'){
             sh './gradlew build'
         }
     }
-    stage('Version'){
+    
         dir('gradle') {
             def retFull(){
             def file = readFile 'gradle.properties'
@@ -18,7 +18,7 @@ node('master'){
             println fullvers
             }
         }
-    }
+    
     stage('Stash war file'){
         dir('gradle/build/libs'){
             retFull()
