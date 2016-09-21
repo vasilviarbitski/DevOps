@@ -1,3 +1,14 @@
+dir('gradle') {
+            def retFull(){
+            def file = readFile 'gradle.properties'
+            def lines = file.readLines()
+            def vers = lines[1].tokenize('=')
+            def subvers = lines[2].tokenize('=')
+            def fullvers = vers[1]+"."+subvers[1]
+            println fullvers
+            }
+        }
+        
 node('master'){
     stage('Pull from git'){
         git 'https://github.com/vasilviarbitski/DevOps'
@@ -8,16 +19,7 @@ node('master'){
         }
     }
     
-        dir('gradle') {
-            def retFull(){
-            def file = readFile 'gradle.properties'
-            def lines = file.readLines()
-            def vers = lines[1].tokenize('=')
-            def subvers = lines[2].tokenize('=')
-            def fullvers = vers[1]+"."+subvers[1]
-            println fullvers
-            }
-        }
+        
     
     stage('Stash war file'){
         dir('gradle/build/libs'){
