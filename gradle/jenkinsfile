@@ -14,11 +14,14 @@ node('master'){
             def vers = lines[1].tokenize('=')
             def subvers = lines[2].tokenize('=')
             def fullvers = vers[1]+"."+subvers[1]
+            println fullvers
         }
     }
     stage('Stash war file'){
         dir('gradle/build/libs'){
-            stash includes: "build##-${fullvers}.war", name: 'warfile'
+            println fullvers
+            def it = 'build##-'+fullvers
+            stash includes: it+'.war', name: 'warfile'
         }
     }
  //   stage('Push version to git'){
