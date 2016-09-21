@@ -32,7 +32,7 @@ node('tomcat'){
     }
     stage('HTTP request'){
         def req = httpRequest 'http://10.0.0.11:8080/build/'
-        echo req
+        println req
     }
 }
 
