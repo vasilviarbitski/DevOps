@@ -14,8 +14,8 @@ war {
     version = vers+"."+subvers
 }
 
-vers++
-ant.propertyfile(
-        file: "gradle.properties") {
-        entry( key: "vers", value: vers)
-        }
+//vers++
+//ant.propertyfile(
+//        file: "gradle.properties") {
+//        entry( key: "vers", value: vers)
+//        }

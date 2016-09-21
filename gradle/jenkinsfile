@@ -36,5 +36,3 @@ node('tomcat'){
     }
 }
 
-//File file = new File('gradle.properties')
-//def x = file.text
