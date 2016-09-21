@@ -24,7 +24,7 @@ node('master'){
         dir('gradle/build/libs'){
             def fullvers = retFull()
             println 'Stash file version : '+fullvers
-            stash includes: "${fullvers}.war", name: 'warfile'
+            stash includes: "build##-${fullvers}.war", name: 'warfile'
         }
     }
  //   stage('Push version to git'){
