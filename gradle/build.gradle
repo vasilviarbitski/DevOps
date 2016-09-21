@@ -11,7 +11,7 @@ compile group: 'org.apache.commons', name: 'commons-io', version: '1.3.2'
 
 war {
     archivesBaseName = 'build##' 
-    version = vers
+    version = vers+"."+subvers
 }
 
 vers++
