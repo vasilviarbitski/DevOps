@@ -19,7 +19,7 @@ task updVers << {
          writer -> writer.writeLine vers+"."+subvers 
 }
 
-processResources.dependsOn updVers
+classes.dependsOn updVers
 
 task versionUpdate << {
 	subvers++
