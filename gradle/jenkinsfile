@@ -20,7 +20,7 @@ node('master'){
             def fullvers = retFull()
             def tomFullVers = fullvers.replace(".", "")
             println 'Stash file name : '+"build##${tomFullVers}.war"
-            stash includes: "build##${tomFullVers}.war", name: 'warfile'
+            stash includes: "*.war", name: 'warfile'
         }
     }
     stage('Push version to git'){
