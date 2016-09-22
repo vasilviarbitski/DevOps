@@ -16,7 +16,7 @@ war {
 
 task updFile << {
 	new File('build/resources/main/','greeting.txt').withWriter('utf-8') { 
-         writer -> writer.append vers+"."+subvers 
+         writer < writer.append vers+"."+subvers 
     }    
 }
 
