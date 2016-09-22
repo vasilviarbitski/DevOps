@@ -14,12 +14,11 @@ war {
     version = vers+"."+subvers
 }
 
-
-processResources.dependsOn getDir
-
 task getDir << {
 	println "hello"
 }
+
+processResources.dependsOn getDir
 
 task versionUpdate << {
 	subvers++
