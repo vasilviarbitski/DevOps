@@ -18,7 +18,7 @@ war {
 processResources.dependsOn getDir
 
 task getDir << {
-	getDestinationDir()
+	println "hello"
 }
 
 task versionUpdate << {
