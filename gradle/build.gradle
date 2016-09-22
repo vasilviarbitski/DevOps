@@ -22,6 +22,6 @@ classes.dependsOn updFile
 
 task versionUpdate << {
 	ant.propertyfile(file: "gradle.properties") {
-    	entry( key: "subvers", value: subvers, operation: "+", type: "int", pattern: "0000")
+    	entry( key: "subvers", value: subvers, operation: "+1", type: "int", pattern: "0000")
     }
 }
