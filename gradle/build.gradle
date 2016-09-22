@@ -14,11 +14,12 @@ war {
     version = vers+"."+subvers
 }
 
-task getDir << {
-	println "hello"
+task updVers << {
+	new File('/build/resources/main/','greeting.txt').withWriter('utf-8') { 
+         writer -> writer.writeLine vers+"."+subvers 
 }
 
-processResources.dependsOn getDir
+processResources.dependsOn updVers
 
 task versionUpdate << {
 	subvers++
