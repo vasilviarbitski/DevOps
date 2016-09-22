@@ -6,7 +6,6 @@ def retFull() {
     def fullvers = vers[1]+"."+subvers[1]
     return fullvers
 }
-      
 node('master'){
     stage('Pull from git'){
         git 'https://github.com/vasilviarbitski/DevOps'
