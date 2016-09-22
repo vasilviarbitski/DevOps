@@ -19,7 +19,7 @@ node('master'){
         dir('gradle/build/libs'){
             def fullvers = retFull()
             def tomFullVers = fullvers.replace(".", "")
-            println 'Stash file version : '+fullvers
+            println 'Stash file name : '+tomFullVers
             stash includes: "build##${tomFullVers}.war", name: 'warfile'
         }
     }
