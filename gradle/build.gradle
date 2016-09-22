@@ -15,7 +15,7 @@ war {
 }
 
 
-getDir.mustRunAfter processResources
+processResources.dependsOn getDir
 
 task getDir << {
 	getDestinationDir()
