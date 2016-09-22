@@ -15,9 +15,9 @@ war {
 }
 
 
-processResources.finalizedBy getVersion
+getVersion.mustRunAfter processResources
 
-task getVersion << {
+task getDir << {
 	getDestinationDir()
 }
 
