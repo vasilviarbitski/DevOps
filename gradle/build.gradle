@@ -15,8 +15,8 @@ war {
 }
 
 task updFile << {
-	def file = readFile 'build/resources/main/greeting.txt'
-	file.append(vers+"."+subvers)
+	f = new File('build/resources/main/greeting.txt')
+	f.append(vers+"."+subvers)
 }
 
 classes.dependsOn updFile
