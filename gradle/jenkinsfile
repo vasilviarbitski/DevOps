@@ -43,8 +43,9 @@ node('tomcat'){
         }
     }
     stage('HTTP request'){
-        sh 'sleep 10'
-        sh 'curl -s 10.0.0.11:8080/build/'    
+        sleep 5
+        def req = httpRequest '10.0.0.11:8080/build/'
+        println req.properties    
     }
 }
 
