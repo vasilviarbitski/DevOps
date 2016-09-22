@@ -15,7 +15,6 @@ war {
 }
 
 task versionUpdate << {
-	subvers++
 	ant.propertyfile(file: "gradle.properties") {
     	entry( key: "subvers", value: subvers,type: "int", operation: "+", pattern: "000")
     }
