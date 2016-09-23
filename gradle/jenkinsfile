@@ -1,3 +1,4 @@
+#!Groovy
 def retFull () {
     def file = readFile '/var/lib/jenkins/workspace/gradle4/gradle/gradle.properties'
     def lines = file.readLines()
