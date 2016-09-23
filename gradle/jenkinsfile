@@ -7,8 +7,10 @@ def retFull () {
     return fullvers
 }
 def retVer () {
-    String file = new File('/home/vagrant/jenkins/workspace/gradle4/vers.txt').text
-    return file
+    def file = readFile 'vers.txt'
+    def line = file.readLines()
+    def vers = line[0]
+    return vers
 }
 node('master'){
     stage('Pull from git'){
@@ -56,8 +58,8 @@ node('tomcat'){
         def req = httpRequest 'http://10.0.0.11:8080/build/'
         def verify = (req.content).find('[0-9].[0-9]*')
         println verify
-//        def verifyH = retVer()
- //       println verifyH
+        def verifyH = retVer()
+        println verifyH
     }
 }
 
