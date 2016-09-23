@@ -44,9 +44,7 @@ node('tomcat'){
         }
     }
     stage('Delete older builds'){
-       sh 'rm /var/lib/tomcat/webapps/build##40014.war'
-   
-        
+        sh 'cd /var/lib/tomcat/webapps/ &&  ls -t build##*.war | tail -n +3 | xargs rm'
     }
     stage('HTTP request'){
         sleep 8
