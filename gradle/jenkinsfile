@@ -59,10 +59,12 @@ node('tomcat'){
         def verify = (req.content).find('[0-9].[0-9]*')
         def verifyH = retVer()
         if (verify == verifyH){
+            println "${verify} = ${verifyH}"
             println 'Success!!!'
         }
         else {
-            qwerqwerw
+            println "${verify} != ${verifyH}"
+            println 'Failure'
         }
     }
 }
