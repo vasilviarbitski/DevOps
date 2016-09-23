@@ -53,6 +53,7 @@ node('tomcat'){
         def req = httpRequest 'http://10.0.0.11:8080/build/'
         def verify = (req.content).find('[0-9].[0-9]*')
         println verify 
+        def  verifyHome = sh 'cat vers.txt'
     }
 }
 
