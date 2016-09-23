@@ -54,6 +54,7 @@ node('tomcat'){
         def verify = (req.content).find('[0-9].[0-9]*')
         println verify 
         def  verifyHome = sh 'cat vers.txt'
+        println verifyHome
     }
 }
 
