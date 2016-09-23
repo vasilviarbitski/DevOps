@@ -51,7 +51,7 @@ node('tomcat'){
         sleep 8
         def req = httpRequest 'http://10.0.0.11:8080/build/'
         def old = sh "cd /var/lib/tomcat/webapps/ && cat vers.txt"
-        println 'old version is: 'old
+        println "old version is: ${old}"
         println req.content    
     }
 }
