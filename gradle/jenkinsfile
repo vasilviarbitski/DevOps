@@ -1,4 +1,4 @@
-def retFull() {
+def retFull () {
     def file = readFile '/var/lib/jenkins/workspace/gradle4/gradle/gradle.properties'
     def lines = file.readLines()
     def vers = lines[1].tokenize('=')
@@ -6,6 +6,11 @@ def retFull() {
     def fullvers = vers[1]+"."+subvers[1]
     return fullvers
 }
+def retVers () {
+    def file = readFile 'var/lib/tomcat/webapps/vers.txt'
+    def 
+}
+
 node('master'){
     stage('Pull from git'){
         git 'https://github.com/vasilviarbitski/DevOps'
@@ -50,9 +55,9 @@ node('tomcat'){
     stage('HTTP request'){
         sleep 8
         def req = httpRequest 'http://10.0.0.11:8080/build/'
-        def old = sh "cd /var/lib/tomcat/webapps/ && cat vers.txt"
-        println "old version is: ${old}"
         println req.content    
+        sh 'curl http://10.0.0.11:8080/build/ | grep -o "Gradle\s[1-9]\.[0-9]*"'
+        sh 'cd /var/lib/tomcat/webapps/ && cat vers.txt'
     }
 }
 
