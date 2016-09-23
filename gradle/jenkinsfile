@@ -45,12 +45,9 @@ node('tomcat'){
     }
     stage('Delete older builds'){
         dir ('/var/lib/tomcat/webapps/'){ 
-            sh 'mkdir old'   
-            sh 'ls -t | grep "build##......war" | tail -n +3 | xargs -I{} mv {} old'
+            sh 'rm build##40014.war'
         }
-        dir ('/var/lib/tomcat/webapps/old'){
-            deleteDir()
-        }
+        
     }
     stage('HTTP request'){
         sleep 8
