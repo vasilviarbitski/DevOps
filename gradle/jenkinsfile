@@ -41,7 +41,6 @@ node('tomcat'){
     stage('Upload to tomcat'){
         dir ('/var/lib/tomcat/webapps/'){    
             unstash 'warfile'
-            sh 'ls -tp | grep "build##" | tail -n +7 | xargs rm -rf'
         }
     }
     stage('Delete older builds'){
