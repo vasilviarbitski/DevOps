@@ -7,7 +7,7 @@ def retFull () {
     return fullvers
 }
 def retVer () {
-    def file = readFile 'ver.txt'
+    def file = readFile 'vers.txt'
     return file.text
 }
 node('master'){
