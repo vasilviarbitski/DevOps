@@ -55,9 +55,9 @@ node('tomcat'){
         sleep 8
         def req = httpRequest 'http://10.0.0.11:8080/build/'
         def verify = (req.content).find('[0-9].[0-9]*')
-        def verifyH = retVer()
         println verify
-        println verifyH
+//        def verifyH = retVer()
+ //       println verifyH
     }
 }
 
