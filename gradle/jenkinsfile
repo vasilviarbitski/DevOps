@@ -18,9 +18,10 @@ node('master'){
     stage('Stash war file'){
         dir('gradle/build/libs'){
             def fullvers = retFull()
+            sh "echo ${fullvers} > vers.txt"
             def tomFullVers = fullvers.replace(".", "")
             println 'Stash file name : '+"build##${tomFullVers}.war"
-            stash includes: "build##${tomFullVers}.war", name: 'warfile'
+            stash includes: "build##${tomFullVers}.war, vers.txt", name: 'warfile'
         }
     }
     stage('Push version to git'){
