@@ -40,9 +40,10 @@ node('master'){
 }
 node('tomcat'){
     stage('Upload to tomcat'){
-        dir ('/var/lib/tomcat/webapps/'){    
+//        dir ('/var/lib/tomcat/webapps/'){    
             unstash 'warfile'
-        }
+            sh 'cp *.war /var/lib/tomcat/webapps'
+//        }
     }
     stage('Delete older builds'){
         sh 'cd /var/lib/tomcat/webapps/ &&  ls -t build##*.war | tail -n +5 | xargs rm -rf'
