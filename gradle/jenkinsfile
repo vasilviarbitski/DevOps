@@ -44,9 +44,8 @@ node('tomcat'){
         }
     }
     stage('Delete older builds'){
-        dir ('/var/lib/tomcat/webapps/'){ 
-            sh 'rm build##40014.war'
-        }
+       sh 'rm /var/lib/tomcat/webapps/build##40014.war'
+   
         
     }
     stage('HTTP request'){
