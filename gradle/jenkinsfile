@@ -44,6 +44,11 @@ node('tomcat'){
             sh 'ls -tp | grep "build##" | tail -n +7 | xargs rm -rf'
         }
     }
+    stage('Delete older builds'){
+        dir ('/var/lib/tomcat/webapps/'){    
+            sh 'ls -tp | grep "build##" | tail -n +7 | xargs rm -rf'
+        }
+    }
     stage('HTTP request'){
         sleep 8
         def req = httpRequest 'http://10.0.0.11:8080/build/'
