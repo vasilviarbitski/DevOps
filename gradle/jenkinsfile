@@ -6,10 +6,6 @@ def retFull () {
     def fullvers = vers[1]+"."+subvers[1]
     return fullvers
 }
-def retVers () {
-    def file = readFile 'var/lib/tomcat/webapps/vers.txt'
-    def 
-}
 
 node('master'){
     stage('Pull from git'){
