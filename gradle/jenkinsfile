@@ -63,8 +63,7 @@ node('tomcat'){
             println 'Success!!!'
         }
         else {
-            println "${verify} != ${verifyH}"
-            println 'Failure'
+            currentBuild.result = 'FAILURE'
         }
     }
 }
