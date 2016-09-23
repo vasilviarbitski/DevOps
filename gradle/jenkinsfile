@@ -7,8 +7,8 @@ def retFull () {
     return fullvers
 }
 def retVer () {
-    def file = readFile 'vers.txt'
-    return file.text
+    String file = new File('vers.txt').text
+    return file
 }
 node('master'){
     stage('Pull from git'){
