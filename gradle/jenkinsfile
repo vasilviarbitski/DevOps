@@ -6,6 +6,10 @@ def retFull () {
     def fullvers = vers[1]+"."+subvers[1]
     return fullvers
 }
+def retVer () {
+    def file = readFile 'ver.txt'
+    return file.text
+}
 node('master'){
     stage('Pull from git'){
         git 'https://github.com/vasilviarbitski/DevOps'
@@ -40,10 +44,9 @@ node('master'){
 }
 node('tomcat'){
     stage('Upload to tomcat'){
-//        dir ('/var/lib/tomcat/webapps/'){    
             unstash 'warfile'
             sh 'cp *.war /var/lib/tomcat/webapps'
-//        }
+            sh 'rm *.war'
     }
     stage('Delete older builds'){
         sh 'cd /var/lib/tomcat/webapps/ &&  ls -t build##*.war | tail -n +5 | xargs rm -rf'
@@ -52,9 +55,9 @@ node('tomcat'){
         sleep 8
         def req = httpRequest 'http://10.0.0.11:8080/build/'
         def verify = (req.content).find('[0-9].[0-9]*')
-        println verify 
-        def  verifyHome = sh 'cat vers.txt'
-        println verifyHome
+        def verifyH = retVer()
+        println verify
+        println verifyH
     }
 }
 
