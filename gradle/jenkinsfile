@@ -7,7 +7,7 @@ def retFull () {
     return fullvers
 }
 def retVer () {
-    String file = new File('vers.txt').text
+    String file = new File('/home/vagrant/jenkins/workspace/gradle4/vers.txt').text
     return file
 }
 node('master'){
