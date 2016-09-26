@@ -70,7 +70,7 @@ node('tomcat'){
      stage('Upload to Nexus'){
         def fullvers = retVer()
         def tomFullVers = fullvers.replace(".", "")
-        sh "curl -X PUT -u admin:admin123 -T /var/lib/tomcat/webapps/build##${tomFullVers}.war http://10.0.0.11:8081/nexus/content/repositories/releases/epam/build/${fullvers}/build%23%23${tomFullVers}.war"
+        sh "curl -X PUT -u admin:admin123 -T /var/lib/tomcat/webapps/build##${tomFullVers}.war http://10.0.0.10:8081/nexus/content/repositories/releases/epam/build/${fullvers}/build%23%23${tomFullVers}.war"
     }
 }
 
