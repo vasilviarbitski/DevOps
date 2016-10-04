@@ -17,6 +17,19 @@ node('master'){
     stage('Pull from git'){
         git 'https://github.com/vasilviarbitski/DevOps'
     }
+    stage('Push version to git'){
+        dir ('gradle'){
+            sh './gradlew versionUpdate'  
+            sh 'git config --global user.name "Your Name"'    
+            sh 'git config --global user.email "vverbitskii@gmail.com"'
+            sh 'git add gradle.properties'
+            def fullvers = retFull()
+            withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'git', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD']]) {
+                sh("git commit -m 'version changed to ${fullvers}'")
+                sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/vasilviarbitski/DevOps.git master')
+            }
+        }
+    }
     stage('Build war'){
         dir('gradle') {
             sh './gradlew build'
@@ -29,19 +42,6 @@ node('master'){
             def tomFullVers = fullvers.replace(".", "")
             println 'Stash file name : '+"build##${tomFullVers}.war"
             stash includes: "build##${tomFullVers}.war, vers.txt", name: 'warfile'
-        }
-    }
-    stage('Push version to git'){
-        dir ('gradle'){
-            sh './gradlew versionUpdate'  
-            sh 'git config --global user.name "Your Name"'    
-            sh 'git config --global user.email "vverbitskii@gmail.com"'
-            sh 'git add gradle.properties'
-            def fullvers = retFull()
-            withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'git', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD']]) {
-                sh("git commit -m 'version changed to ${fullvers}'")
-                sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/vasilviarbitski/DevOps.git master')
-            }
         }
     }
 }
