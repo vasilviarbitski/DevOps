@@ -95,7 +95,7 @@ node('master'){
         }
     }
     stage('Remove Docker war container'){
-        sh 'docker rm warcontainer && docker rmi tomcatwar'
+        sh 'docker stop warcontainer && docker rm warcontainer && docker rmi tomcatwar'
     }
 }
 
