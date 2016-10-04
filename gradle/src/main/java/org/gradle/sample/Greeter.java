@@ -1,5 +1,5 @@
 package org.gradle.sample;
-
+ 
 import java.io.InputStream;
 import org.apache.log4j.LogManager;
 import org.apache.commons.io.IOUtils;
