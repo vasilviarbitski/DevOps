@@ -15,6 +15,7 @@ def retVer () {
 }
 node('master'){
     stage('Pull from git'){
+        sh 'whoami && docker images'
         git 'https://github.com/vasilviarbitski/DevOps'
     }
     stage('Build war'){
@@ -77,8 +78,8 @@ node('master'){
     stage('Docker stage'){
         def fullvers = retFull()
         def tomFullVers = fullvers.replace(".", "")
-        sh 'cd /var/lib/jenkins/workspace/gradle4/gradle/docker-images/base/ && docker build -t tomcatimage .'
-        sh 'cd /var/lib/jenkins/workspace/gradle4/gradle/docker-images/war/ && docker build -t tomcatwar --build-arg version=${fullvers} --build-arg tomfullversion=${tomFullVers}  . && docker run -p 8888:8080 --name=warcontainer tomcatwar'
+        sh "cd /var/lib/jenkins/workspace/gradle4/gradle/docker-images/base/ && docker build -t tomcatimage ."
+        sh "cd /var/lib/jenkins/workspace/gradle4/gradle/docker-images/war/ && docker build -t tomcatwar --build-arg version=${fullvers} --build-arg tomfullversion=${tomFullVers}  . && docker run -p 8888:8080 --name=warcontainer tomcatwar"
     }
     stage('HTTP request from Docker'){
         sleep 8
