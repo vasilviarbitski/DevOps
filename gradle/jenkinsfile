@@ -13,6 +13,7 @@ def retVer () {
     def vers = line[0]
     return vers
 }
+def smth
 node('master'){
     stage('Pull from git'){
         git 'https://github.com/vasilviarbitski/DevOps'
@@ -47,6 +48,7 @@ node('master'){
 }
 node('tomcat'){
     stage('Upload to tomcat'){
+            smth = 6
             unstash 'warfile'
             sh 'cp *.war /var/lib/tomcat/webapps'
             sh 'rm *.war'
@@ -94,6 +96,7 @@ node('master'){
         }
     }
     stage('Remove Docker war container'){
+        println smth
         sh 'docker stop warcontainer && docker rm warcontainer && docker rmi tomcatwar'
     }
 }
